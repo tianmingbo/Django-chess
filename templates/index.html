@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>中国象棋</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0"/>
+    <link href="/static/css/chess.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/mystyle.css">
+    <script src="/static/jquery-3.3.1.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color:#B6A69A ">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">中国象棋</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if request.user.username %}
+                    <li><a href="/{{ user.username }}">{{ request.user.username }}</a></li>
+                    <li><a href="/rank/">英雄榜</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">个人中心<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/{{ user.username }}">个人信息</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/logout/">注销</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href="/login/">登录</a></li>
+                    <li><a href="/reg/">注册</a></li>
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div id="chessBox" class="chess_box">
+    <canvas id="chess"></canvas>
+    <audio src="/static/audio/click.wav" id="clickAudio" preload="auto"></audio>
+    <audio src="/static/audio/select.wav" id="selectAudio" preload="auto"></audio>
+    <div class="bn_box" id="bnBox">
+        <input type="button" name="restartBtn" id="restartBtn" value="  重新开始  "/>
+        <input type="button" name="gohomeBtn" id="gohomeBtn" value="  返回首页  "/>
+        <input type="button" name="regretBtn" id="regretBtn" value="  悔   棋  "/>
+    </div>
+</div>
+
+<div class="menu_box" id="menuBox">
+    <div class="menu_init" id="indexBox"><a id="indexDy">人机对弈</a><a id="indexQj">残局挑战</a></div>
+    <div class="menu_dy" id="menuDy">
+        <div class="menu_info">
+            <div class="menu_fh" id="menuFh"></div>
+            <label>
+                <input name="depth" type="radio" value="2">
+                入门</label>
+            <br/>
+            <label>
+                <input name="depth" type="radio" value="3" checked>
+                业余</label>
+            <br/>
+            <label>
+                <input name="depth" type="radio" value="4">
+                专业</label>
+        </div>
+        <a id="playBtn">开始对弈</a></div>
+    <div class="menu_qj" id="menuQj">
+        <div class="menu_info">
+            <div class="menu_fh" id="menuGb"></div>
+            <label>
+                <input name="clasli" type="radio" value="0" checked>
+                左右夹攻</label>
+            <br/>
+            <label>
+                <input name="clasli" type="radio" value="1">
+                拔塞回川</label>
+            <br/>
+            <label>
+                <input name="clasli" type="radio" value="2">
+                七星会阵</label>
+            <br/>
+            <label>
+                <input name="clasli" type="radio" value="3">
+                蚯蚓降龙</label>
+        </div>
+        <a id="clasliBtn">开始挑战</a></div>
+</div>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/js/play.js"></script>
+<script type="text/javascript" src="/static/js/AI.js"></script>
+<script type="text/javascript" src="/static/js/gambit.js"></script>
+<script type="text/javascript" src="/static/js/clasli.js"></script>
+
+</body>
+</html>
