@@ -30,7 +30,7 @@ AI.init = function (pace) {
     //AI.treeDepth=4;
 
     AI.number = 0;
-    AI.setHistoryTable.lenght = 0
+    AI.setHistoryTable.lenght = 0;
 
     var val = AI.getAlphaBeta(-99999, 99999, AI.treeDepth, com.arr2Clone(play.map), play.my);
     //var val = AI.iterativeSearch(com.arr2Clone(play.map),play.my)
@@ -60,7 +60,7 @@ AI.iterativeSearch = function (map, my) {
         var nowTime = new Date().getTime();
         AI.treeDepth = i;
         AI.aotuDepth = i;
-        var val = AI.getAlphaBeta(-99999, 99999, AI.treeDepth, map, my)
+        var val = AI.getAlphaBeta(-99999, 99999, AI.treeDepth, map, my);
         if (nowTime - initTime > timeOut) {
             return val;
         }
@@ -82,7 +82,7 @@ AI.getMapAllMan = function (map, my) {
         }
     }
     return mans;
-}
+};
 
 //取得棋谱所有己方棋子的着法
 AI.getMoves = function (map, my) {
@@ -202,22 +202,5 @@ AI.evaluate = function (map, my) {
     //val+=Math.floor( Math.random() * 10);  //让AI走棋增加随机
     AI.number++;
     return val * my;
-}
-
-//评估棋局 取得棋盘双方棋子价值差
-AI.evaluate1 = function (map, my) {
-    var val = 0;
-    for (var i in play.mans) {
-        var man = play.mans[i];
-        if (man.isShow) {
-            val += man.value[man.y][man.x] * man.my;
-        }
-    }
-    //val+=Math.floor( Math.random() * 10);  //让AI走棋增加随机
-    //com.show()
-    //z(val*my)
-    AI.number++;
-    return val * my;
-}
-
+};
 

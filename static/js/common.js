@@ -300,59 +300,6 @@ com.getData = function (url, fun) {
     }
 }
 
-//把坐标生成着法
-// com.createMove = function (map, x, y, newX, newY) {
-//     var h = "";
-//     var man = com.mans[map[y][x]];
-//     h += man.text;
-//     map[newY][newX] = map[y][x];
-//     delete map[y][x];
-//     if (man.my === 1) {
-//         var mumTo = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
-//         newX = 8 - newX;
-//         h += mumTo[8 - x];
-//         if (newY > y) {
-//             h += "退";
-//             if (man.pater == "m" || man.pater == "s" || man.pater == "x") {
-//                 h += mumTo[newX];
-//             } else {
-//                 h += mumTo[newY - y - 1];
-//             }
-//         } else if (newY < y) {
-//             h += "进";
-//             if (man.pater == "m" || man.pater == "s" || man.pater == "x") {
-//                 h += mumTo[newX];
-//             } else {
-//                 h += mumTo[y - newY - 1];
-//             }
-//         } else {
-//             h += "平";
-//             h += mumTo[newX];
-//         }
-//     } else {
-//         var mumTo = ["１", "２", "３", "４", "５", "６", "７", "８", "９", "10"];
-//         h += mumTo[x];
-//         if (newY > y) {
-//             h += "进";
-//             if (man.pater == "M" || man.pater == "S" || man.pater == "X") {
-//                 h += mumTo[newX];
-//             } else {
-//                 h += mumTo[newY - y - 1];
-//             }
-//         } else if (newY < y) {
-//             h += "退";
-//             if (man.pater == "M" || man.pater == "S" || man.pater == "X") {
-//                 h += mumTo[newX];
-//             } else {
-//                 h += mumTo[y - newY - 1];
-//             }
-//         } else {
-//             h += "平";
-//             h += mumTo[newX];
-//         }
-//     }
-//     return h;
-// }
 
 com.initMap = [
     ['C0', 'M0', 'X0', 'S0', 'J0', 'S1', 'X1', 'M1', 'C1'],

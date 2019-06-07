@@ -178,7 +178,7 @@ play.clickPoint = function (x, y) {
         }
     }
 
-}
+};
 
 //Ai自动走棋
 play.AIPlay = function () {
